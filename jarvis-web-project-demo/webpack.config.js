@@ -9,7 +9,7 @@ module.exports = {
 
   output: {
     path: APP_DIRECTORY,
-    filename: './bundle.js'
+    filename: 'bundle.js'
   },
 
   resolve: {
