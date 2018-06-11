@@ -1,31 +1,65 @@
-//we need a button to click
-//we need a function to go and hit my jarvis-api -using XMLHttpRequest
+var root = 'http://ssimmons.tgb2.ninja:4900/#';
+var useHash = true;
+var hash = '#';
+var router = new Navigo(root, true, '#');
+var HomePage = require('./web-pages/home-page.js')
+var AvengersPage = require('./web-pages/avengers-page.js')
+var ThundraPage = require('./web-pages/thundra-page.js')
+var StormPage = require('./web-pages/storm-page.js')
+var SelenePage = require('./web-pages/selene-page.js')
+var ThenaPage = require('./web-pages/thena-page.js')
+var MJWPage = require('./web-pages/mjw-page.js')
 
-var getAvengers = function() {
-  var req = new XMLHttpRequest()
-    req.onreadystatechange = function(){
-      if(this.readyState == 4) {
-        console.log(JSON.parse(this.responseText))
+router
+  .on(function () {
+    document.getElementById('content').innerHTML = ''
+    HomePage()
+  })
+  .on({
+    'avengers': function() {
+    document.getElementById('content').innerHTML = ''
+    AvengersPage()
+  },
+
+     'thundra': function (){
+     document.getElementById('content').innerHTML = '' 
+     ThundraPage()
+    },
+  
+     'storm': function (){
+     document.getElementById('content').innerHTML = ''
+      StormPage()
+    },
+  
+    'selene': function (){
+     document.getElementById('content').innerHTML = ''
+      SelenePage()
+    },
+  
+   'thena': function () {
+    document.getElementById('content').innerHTML = ''
+      ThenaPage()
+    },
+  
+   'mjw': function () {
+    document.getElementById('content').innerHTML = ''
+      MJWPage() 
     }
-  }
-  req.open('Get','http://ssimmons.tgb2.ninja:4400')
-  req.send()
-}
-//HTTP Verbs GET = Read Data, POST = Give You Some Data (Write Data), PUT = Update Data, DELETE = Deletes Data
-
-var content = document.getElementById('content')
-var button = document.createElement('button')
-button.onclick = getAvengers
-
-button.innerHTML = 'Women of Marvel'
-
-//Add a w3 CSS card with Image
-var card = document.createElement('div')
-var img = document.createElement('img')
-img.src = '/assets/*.img'
+  })
 
 
-var h1 = document.createElement('h2')
-h1.innerHTML = 'Women of Marvel'
-content.append(h1)
-content.append(button)
+  .resolve();
+
+
+
+
+
+
+
+ /*var content = document.getElementById('content') 
+   content.innerHTML= 'Hello from Avengers' 
+
+ } */
+
+
+
